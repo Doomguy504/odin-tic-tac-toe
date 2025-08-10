@@ -15,21 +15,12 @@ const gameboard = (function(){
     }
 
     const displayInConsole = function() {
-        const displayBoard = board.map((e) => {
-            if (e == null){
-                return " ";
-            }
-            else {
-                return e;
-            }
-        });
-
         console.log('   |   |');
-        console.log(` ${displayBoard[0]} | ${displayBoard[1]} | ${displayBoard[2]}`);
+        console.log(` ${board[0]} | ${board[1]} | ${board[2]}`);
         console.log('------------');
-        console.log(` ${displayBoard[3]} | ${displayBoard[4]} | ${displayBoard[5]}`);
+        console.log(` ${board[3]} | ${board[4]} | ${board[5]}`);
         console.log('------------');
-        console.log(` ${displayBoard[6]} | ${displayBoard[7]} | ${displayBoard[8]}`);
+        console.log(` ${board[6]} | ${board[7]} | ${board[8]}`);
         console.log('   |   |');
     }
 
