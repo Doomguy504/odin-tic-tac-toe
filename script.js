@@ -43,3 +43,6 @@ function createPlayer(name){
 
     return {getName};
 }
+
+const human = createPlayer('Player1');
+const computer = createPlayer('cpu');
