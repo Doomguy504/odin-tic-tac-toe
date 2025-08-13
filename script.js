@@ -47,5 +47,13 @@ function createPlayer(name, marker){
     return {getName, getMarker};
 }
 
+function createCPU(name, marker){
+    const {getName, getMarker} = createPlayer(name, marker);
+
+    const generateMove = (board) => {
+        
+    }
+}
+
 const human = createPlayer('Player1', 'X');
 const computer = createPlayer('cpu', 'O');
