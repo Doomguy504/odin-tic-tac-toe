@@ -27,6 +27,16 @@ const gameboard = (function(){
     return {getPosition, setPosition, displayInConsole};
 })()
 
+const game = (function(){
+    //TODO convert from console to DOM
+    const playRound = function(){
+        const playerChoice = prompt('Choose your play (0-9): ');
+        
+    }
+
+    return {playRound};
+})()
+
 function createPlayer(name){
     const playerName = name;
 
