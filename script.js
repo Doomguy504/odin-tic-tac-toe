@@ -37,12 +37,14 @@ const game = (function(){
     return {playRound};
 })()
 
-function createPlayer(name){
+function createPlayer(name, marker){
     const playerName = name;
+    const playerMarker = marker;
 
     const getName = () => playerName;
+    const getMarker = () => playerMarker;
 
-    return {getName};
+    return {getName, getMarker};
 }
 
 const human = createPlayer('Player1');
