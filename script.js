@@ -38,11 +38,8 @@ const game = (function(){
 })()
 
 function createPlayer(name, marker){
-    const playerName = name;
-    const playerMarker = marker;
-
-    const getName = () => playerName;
-    const getMarker = () => playerMarker;
+    const getName = () => name;
+    const getMarker = () => marker;
 
     return {getName, getMarker};
 }
