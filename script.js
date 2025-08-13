@@ -5,6 +5,8 @@ const gameboard = (function(){
         6, 7, 8
     ];
 
+    const getBoard = () => board;
+
     const getPosition = function(position) {
         return board.at(position);
     }
@@ -24,7 +26,7 @@ const gameboard = (function(){
         console.log('   |   |');
     }
 
-    return {getPosition, setPosition, displayInConsole};
+    return {getPosition, setPosition, displayInConsole, getBoard};
 })()
 
 const game = (function(){
