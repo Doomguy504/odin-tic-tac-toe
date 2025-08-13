@@ -47,5 +47,5 @@ function createPlayer(name, marker){
     return {getName, getMarker};
 }
 
-const human = createPlayer('Player1');
-const computer = createPlayer('cpu');
+const human = createPlayer('Player1', 'X');
+const computer = createPlayer('cpu', 'O');
