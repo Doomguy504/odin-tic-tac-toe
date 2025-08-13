@@ -59,4 +59,4 @@ function createCPU(name, marker){
 }
 
 const human = createPlayer('Player1', 'X');
-const computer = createPlayer('cpu', 'O');
+const computer = createCPU('cpu', 'O');
