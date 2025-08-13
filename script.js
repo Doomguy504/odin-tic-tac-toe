@@ -49,9 +49,13 @@ function createPlayer(name, marker){
 function createCPU(name, marker){
     const {getName, getMarker} = createPlayer(name, marker);
 
-    const generateMove = (board) => {
-        
+    const generateMove = (gameboard) => {
+        const availableMoves = gameboard.getBoard().filter((e) => typeof e == "number");
+
+        return Math.floor(Math.random() * availableMoves.length);
     }
+
+    return {getName, getMarker, generateMove};
 }
 
 const human = createPlayer('Player1', 'X');
