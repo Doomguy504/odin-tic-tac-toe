@@ -29,16 +29,6 @@ const gameboard = (function(){
     return {getPosition, setPosition, displayInConsole, getBoard};
 })()
 
-const game = (function(){
-    //TODO convert from console to DOM
-    const playRound = function(){
-        const playerChoice = prompt('Choose your play (0-9): ');
-        
-    }
-
-    return {playRound};
-})()
-
 function createPlayer(name, marker){
     const getName = () => name;
     const getMarker = () => marker;
@@ -60,3 +50,13 @@ function createCPU(name, marker){
 
 const human = createPlayer('Player1', 'X');
 const computer = createCPU('cpu', 'O');
+
+const game = (function(){
+    //TODO convert from console to DOM
+    const playRound = function(){
+        const playerChoice = prompt('Choose your play (0-9): ');
+        
+    }
+
+    return {playRound};
+})()
