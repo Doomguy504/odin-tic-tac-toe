@@ -11,7 +11,6 @@ const gameboard = (function(){
         return board.at(position);
     }
 
-    //TODO input validation
     const setPosition = function(position, marker) {
         board[position] = marker;
     }
