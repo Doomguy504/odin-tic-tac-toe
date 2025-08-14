@@ -29,7 +29,13 @@ const gameboard = (function(){
         console.log(` ${board[6]} | ${board[7]} | ${board[8]}`);
     }
 
-    return {getPosition, setPosition, displayInConsole, getBoard, getAvailableMoves};
+    const resetBoard = function(){
+        for (let i=0; i < 9; i++){
+            board[i] = i;
+        }
+    }
+
+    return {getPosition, setPosition, displayInConsole, getBoard, getAvailableMoves, resetBoard};
 })()
 
 function createPlayer(name, marker){
