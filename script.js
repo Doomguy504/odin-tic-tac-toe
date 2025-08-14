@@ -53,6 +53,7 @@ const computer = createCPU('cpu', 'O');
 
 const game = (function(){
     const turnCounter = 0;
+
     //TODO convert from console to DOM
     const playRound = function(){
         gameboard.displayInConsole();
@@ -61,9 +62,15 @@ const game = (function(){
         //TODO validate legal move
         gameboard.setPosition(playerChoice, human.getMarker());
 
-        //TODO check for winner
+        if (checkWinner()){
+            return;
+        }
 
         gameboard.setPosition(computer.generateMove(), computer.getMarker());
+
+        if (checkWinner()){
+            return;
+        }
 
         gameboard.displayInConsole();
 
@@ -71,6 +78,10 @@ const game = (function(){
     }
 
     const checkWinner = function(){
+        if (turnCounter < 3){
+            return false;
+        }
+
         const wins = [
             [0, 1, 2], // Top row
             [3, 4, 5], // Middle row
@@ -84,10 +95,13 @@ const game = (function(){
 
         for (const [a, b, c] of wins){
             if ( typeof gameboard.getPosition(a) != 'number' && gameboard.getPosition(a) == gameboard.getPosition(b) && gameboard.getPosition(a) == gameboard.getPosition(c)){
-                return gameboard.getPosition(a);
+                //TODO change to DOM
+                gameboard.displayInConsole();
+                console.log(`${gameboard.getPosition(a)} wins!`);
+                return true;
             }
             else {
-                return null;
+                return false;
             }
         }
     }
