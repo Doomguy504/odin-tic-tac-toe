@@ -16,6 +16,10 @@ const gameboard = (function(){
         board[position] = marker;
     }
 
+    const getAvailableMoves = function(){
+        return board.filter((e) => typeof e == 'number');
+    }
+
     const displayInConsole = function() {
         console.log(` ${board[0]} | ${board[1]} | ${board[2]}`);
         console.log('------------');
@@ -38,9 +42,7 @@ function createCPU(name, marker){
     const {getName, getMarker} = createPlayer(name, marker);
 
     const generateMove = () => {
-        const availableMoves = gameboard.getBoard().filter((e) => typeof e == "number");
-
-        return Math.floor(Math.random() * availableMoves.length);
+        return Math.floor(Math.random() * gameboard.getAvailableMoves().length);
     }
 
     return {getName, getMarker, generateMove};
@@ -63,6 +65,10 @@ const game = (function(){
         gameboard.setPosition(computer.generateMove(), computer.getMarker());
 
         gameboard.displayInConsole();
+    }
+
+    const checkWinner = function(){
+
     }
 
     return {playRound};
