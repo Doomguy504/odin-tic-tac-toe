@@ -57,6 +57,7 @@ const game = (function(){
     //TODO convert from console to DOM
     const playRound = function(){
         gameboard.displayInConsole();
+
         const playerChoice = prompt('Choose your play (0-9): ');
 
         //TODO validate legal move
