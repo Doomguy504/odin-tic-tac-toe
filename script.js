@@ -61,9 +61,12 @@ const game = (function(){
     const playRound = function(){
         gameboard.displayInConsole();
 
-        const playerChoice = prompt('Choose your play (0-9): ');
+        let playerChoice = prompt('Choose your play (0-9): ');
 
-        //TODO validate legal move
+        while (!gameboard.getAvailableMoves().includes(Number.parseInt(playerChoice))){
+            playerChoice = prompt('Invalid move.\nChoose your play (0-9): ');
+        }
+        
         gameboard.setPosition(playerChoice, human.getMarker());
 
         if (checkWinner()){
