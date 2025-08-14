@@ -13,7 +13,7 @@ const gameboard = (function(){
 
     //TODO input validation
     const setPosition = function(position, marker) {
-        board.at(position) = marker;
+        board[position] = marker;
     }
 
     const displayInConsole = function() {
