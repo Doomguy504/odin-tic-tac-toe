@@ -104,10 +104,9 @@ const game = (function(){
                 console.log(`${gameboard.getPosition(a)} wins!`);
                 return true;
             }
-            else {
-                return false;
-            }
         }
+
+        return false;
     }
 
     return {playRound, checkWinner};
