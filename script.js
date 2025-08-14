@@ -111,6 +111,8 @@ const game = (function(){
                 //TODO change to DOM
                 gameboard.displayInConsole();
                 console.log(`${gameboard.getPosition(a)} wins!`);
+                gameboard.resetBoard();
+                turnCounter = 1;
                 return true;
             }
         }
@@ -118,6 +120,8 @@ const game = (function(){
         if (gameboard.getAvailableMoves().length == 0){
             gameboard.displayInConsole();
             console.log("It's a draw!");
+            gameboard.resetBoard();
+            turnCounter = 1;
             return true;
         }
 
