@@ -66,7 +66,7 @@ const game = (function(){
         gameboard.setPosition(computer.generateMove(), computer.getMarker());
 
         gameboard.displayInConsole();
-        
+
         turnCounter++;
     }
 
