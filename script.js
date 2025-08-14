@@ -43,7 +43,9 @@ function createCPU(name, marker){
     const {getName, getMarker} = createPlayer(name, marker);
 
     const generateMove = () => {
-        return Math.floor(Math.random() * gameboard.getAvailableMoves().length);
+        const availableMoves = gameboard.getAvailableMoves();
+        const randIndex = Math.floor(Math.random() * availableMoves.length);
+        return availableMoves[randIndex];
     }
 
     return {getName, getMarker, generateMove};
