@@ -109,6 +109,12 @@ const game = (function(){
             }
         }
 
+        if (gameboard.getAvailableMoves().length == 0){
+            gameboard.displayInConsole();
+            console.log("It's a draw!");
+            return true;
+        }
+
         return false;
     }
 
