@@ -21,6 +21,7 @@ const gameboard = (function(){
     }
 
     const displayInConsole = function() {
+        console.clear();
         console.log(` ${board[0]} | ${board[1]} | ${board[2]}`);
         console.log('------------');
         console.log(` ${board[3]} | ${board[4]} | ${board[5]}`);
