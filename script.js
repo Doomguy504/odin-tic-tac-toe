@@ -28,7 +28,7 @@ const gameboard = (function(){
         console.log(` ${board[6]} | ${board[7]} | ${board[8]}`);
     }
 
-    return {getPosition, setPosition, displayInConsole, getBoard};
+    return {getPosition, setPosition, displayInConsole, getBoard, getAvailableMoves};
 })()
 
 function createPlayer(name, marker){
