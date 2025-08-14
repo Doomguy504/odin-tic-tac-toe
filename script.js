@@ -39,7 +39,7 @@ function createPlayer(name, marker){
 function createCPU(name, marker){
     const {getName, getMarker} = createPlayer(name, marker);
 
-    const generateMove = (gameboard) => {
+    const generateMove = () => {
         const availableMoves = gameboard.getBoard().filter((e) => typeof e == "number");
 
         return Math.floor(Math.random() * availableMoves.length);
@@ -61,6 +61,8 @@ const game = (function(){
         gameboard.setPosition(playerChoice, human.getMarker());
 
         //TODO check for winner
+
+        gameboard.setPosition(computer.generateMove(), computer.getMarker());
 
         gameboard.displayInConsole();
     }
