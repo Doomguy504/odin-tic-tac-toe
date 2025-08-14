@@ -53,7 +53,7 @@ const human = createPlayer('Player1', 'X');
 const computer = createCPU('cpu', 'O');
 
 const game = (function(){
-    let turnCounter = 0;
+    let turnCounter = 1;
 
     //TODO convert from console to DOM
     const playRound = function(){
