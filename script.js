@@ -52,6 +52,7 @@ const human = createPlayer('Player1', 'X');
 const computer = createCPU('cpu', 'O');
 
 const game = (function(){
+    const turnCounter = 0;
     //TODO convert from console to DOM
     const playRound = function(){
         gameboard.displayInConsole();
@@ -65,6 +66,8 @@ const game = (function(){
         gameboard.setPosition(computer.generateMove(), computer.getMarker());
 
         gameboard.displayInConsole();
+        
+        turnCounter++;
     }
 
     const checkWinner = function(){
