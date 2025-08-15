@@ -13,16 +13,16 @@ const gameboard = (function(){
 
     const getBoard = () => board;
 
-    const getPosition = function(position) {
-        return board.at(position);
+    const getPositionMarker = function(position) {
+        return board[position].textContent;
     }
 
-    const setPosition = function(position, marker) {
-        board[position] = marker;
+    const setPositionMarker = function(position, marker) {
+        board[position].textContent = marker;
     }
 
     const getAvailableMoves = function(){
-        return board.filter((e) => typeof e == 'number');
+        return board.filter((e) => e.textContent == '');
     }
 
     const displayInConsole = function() {
@@ -35,12 +35,12 @@ const gameboard = (function(){
     }
 
     const resetBoard = function(){
-        for (let i=0; i < 9; i++){
-            board[i] = i;
-        }
+        board.forEach((e) => {
+            e.textContent = '';
+        });
     }
 
-    return {getPosition, setPosition, displayInConsole, getBoard, getAvailableMoves, resetBoard};
+    return {getPositionMarker, setPositionMarker, displayInConsole, getBoard, getAvailableMoves, resetBoard};
 })()
 
 function createPlayer(name, marker){
@@ -78,13 +78,13 @@ const game = (function(){
             playerChoice = prompt('Invalid move.\nChoose your play (0-9): ');
         }
         
-        gameboard.setPosition(playerChoice, human.getMarker());
+        gameboard.setPositionMarker(playerChoice, human.getMarker());
 
         if (checkWinner()){
             return;
         }
 
-        gameboard.setPosition(computer.generateMove(), computer.getMarker());
+        gameboard.setPositionMarker(computer.generateMove(), computer.getMarker());
 
         if (checkWinner()){
             return;
@@ -112,10 +112,10 @@ const game = (function(){
         ];
 
         for (const [a, b, c] of wins){
-            if ( typeof gameboard.getPosition(a) != 'number' && gameboard.getPosition(a) == gameboard.getPosition(b) && gameboard.getPosition(a) == gameboard.getPosition(c)){
+            if ( typeof gameboard.getPositionMarker(a) != 'number' && gameboard.getPositionMarker(a) == gameboard.getPositionMarker(b) && gameboard.getPositionMarker(a) == gameboard.getPositionMarker(c)){
                 //TODO change to DOM
                 gameboard.displayInConsole();
-                console.log(`${gameboard.getPosition(a)} wins!`);
+                console.log(`${gameboard.getPositionMarker(a)} wins!`);
                 gameboard.resetBoard();
                 turnCounter = 1;
                 return true;
