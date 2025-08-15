@@ -5,6 +5,9 @@ const gameboard = (function(){
     for (let i = 0; i < 9; i++ ){
         const cell = document.createElement('div');
 
+        cell.addEventListener('click', (e) => {
+            e.currentTarget.textContent = 'X';
+        });
         cell.setAttribute('class', 'cell');
         gameContainer.appendChild(cell);
         
