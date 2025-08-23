@@ -77,7 +77,6 @@ const computer = createCPU('cpu', 'O');
 const game = (function(){
     let turnCounter = 1;
 
-    //TODO convert from console to DOM
     const playRound = function(){
         if (checkWinner()){
             return;
