@@ -75,6 +75,7 @@ const human = createPlayer('Player1', 'X');
 const computer = createCPU('cpu', 'O');
 
 const game = (function(){
+    const winDisplay = document.querySelector('.win-display');
     let turnCounter = 1;
 
     const playRound = function(){
@@ -112,7 +113,7 @@ const game = (function(){
         for (const [a, b, c] of wins){
             if ( typeof gameboard.getPositionMarker(a) != 'number' && gameboard.getPositionMarker(a) == gameboard.getPositionMarker(b) && gameboard.getPositionMarker(a) == gameboard.getPositionMarker(c)){
                 gameboard.resetBoard();
-                //TODO add display for winner
+                displayWinner(gameboard.getPositionMarker(a));
                 turnCounter = 1;
                 return true;
             }
@@ -120,13 +121,25 @@ const game = (function(){
 
         if (gameboard.getAvailableMoves().length == 0){
             gameboard.displayInConsole();
-            //TODO add display for draw
+            displayWinner('draw');
             gameboard.resetBoard();
             turnCounter = 1;
             return true;
         }
 
         return false;
+    }
+
+    const displayWinner = (marker) => {        
+        if (marker == 'X' || marker == 'O'){
+            winDisplay.textContent = `${marker} wins!`;
+        }
+        else if (marker == 'draw'){
+            winDisplay.textContent = "It's a draw!";
+        }
+        else {
+            winDisplay.textContent = '';
+        }
     }
 
     return {playRound, checkWinner};
