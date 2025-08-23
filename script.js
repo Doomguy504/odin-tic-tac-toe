@@ -7,6 +7,7 @@ const gameboard = (function(){
 
         cell.addEventListener('click', (e) => {
             e.currentTarget.textContent = 'X';
+            game.playRound();
         });
         cell.setAttribute('class', 'cell');
         gameContainer.appendChild(cell);
@@ -25,7 +26,11 @@ const gameboard = (function(){
     }
 
     const getAvailableMoves = function(){
-        return board.filter((e) => e.textContent == '');
+        return board.map((e, i) => {
+            if (e.textContent == ''){
+                return i;
+            }
+    });
     }
 
     // depricated
