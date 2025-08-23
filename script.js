@@ -145,6 +145,7 @@ const game = (function(){
         resetButton.addEventListener('click', (ev) => {
             gameboard.resetBoard();
             winDisplay.textContent = '';
+            turnCounter = 1;
             ev.currentTarget.remove();
         });
 
