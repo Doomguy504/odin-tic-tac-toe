@@ -138,7 +138,7 @@ const game = (function(){
             winDisplay.textContent = "It's a draw!";
         }
         else {
-            winDisplay.textContent = '';
+            winDisplay.textContent = 'Whoops, something unexpected happened!';
         }
     }
 
