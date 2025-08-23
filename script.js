@@ -112,7 +112,6 @@ const game = (function(){
 
         for (const [a, b, c] of wins){
             if ( typeof gameboard.getPositionMarker(a) != 'number' && gameboard.getPositionMarker(a) == gameboard.getPositionMarker(b) && gameboard.getPositionMarker(a) == gameboard.getPositionMarker(c)){
-                gameboard.resetBoard();
                 displayWinner(gameboard.getPositionMarker(a));
                 turnCounter = 1;
                 return true;
@@ -122,8 +121,6 @@ const game = (function(){
         if (gameboard.getAvailableMoves().length == 0){
             gameboard.displayInConsole();
             displayWinner('draw');
-            gameboard.resetBoard();
-            turnCounter = 1;
             return true;
         }
 
@@ -140,6 +137,18 @@ const game = (function(){
         else {
             winDisplay.textContent = 'Whoops, something unexpected happened!';
         }
+
+        const body = document.querySelector('body');
+        const resetButton = document.createElement('button');
+        resetButton.textContent = 'Play again';
+
+        resetButton.addEventListener('click', (ev) => {
+            gameboard.resetBoard();
+            winDisplay.textContent = '';
+            ev.currentTarget.remove();
+        });
+
+        body.append(resetButton);
     }
 
     return {playRound, checkWinner};
