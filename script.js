@@ -111,9 +111,8 @@ const game = (function(){
         ];
 
         for (const [a, b, c] of wins){
-            if ( typeof gameboard.getPositionMarker(a) != 'number' && gameboard.getPositionMarker(a) == gameboard.getPositionMarker(b) && gameboard.getPositionMarker(a) == gameboard.getPositionMarker(c)){
+            if ( gameboard.getPositionMarker(a) != '' && gameboard.getPositionMarker(a) == gameboard.getPositionMarker(b) && gameboard.getPositionMarker(a) == gameboard.getPositionMarker(c)){
                 displayWinner(gameboard.getPositionMarker(a));
-                turnCounter = 1;
                 return true;
             }
         }
