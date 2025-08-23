@@ -30,7 +30,7 @@ const gameboard = (function(){
             if (e.textContent == ''){
                 return i;
             }
-    });
+    }).filter((e) => typeof e == 'number');
     }
 
     // depricated
