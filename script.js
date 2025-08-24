@@ -2,13 +2,24 @@ const gameboard = (function(){
     const gameContainer = document.querySelector('.game-container');
     const board = [];
  
+    function handleCellClicked(ev){
+        ev.currentTarget.textContent = 'X';
+        game.playRound();
+        deRegisterCellListener(ev.currentTarget);
+    }
+
+    function registerCellListener(cell){
+        cell.addEventListener('click', handleCellClicked);
+    }
+
+    function deRegisterCellListener(cell){
+        cell.removeEventListener('click', handleCellClicked);
+    }
+
     for (let i = 0; i < 9; i++ ){
         const cell = document.createElement('div');
 
-        cell.addEventListener('click', (e) => {
-            e.currentTarget.textContent = 'X';
-            game.playRound();
-        });
+        registerCellListener(cell);
         cell.setAttribute('class', 'cell');
         gameContainer.appendChild(cell);
         
@@ -23,6 +34,7 @@ const gameboard = (function(){
 
     const setPositionMarker = function(position, marker) {
         board[position].textContent = marker;
+        deRegisterCellListener(board[position]);
     }
 
     const getAvailableMoves = function(){
@@ -46,10 +58,11 @@ const gameboard = (function(){
     const resetBoard = function(){
         board.forEach((e) => {
             e.textContent = '';
+            registerCellListener(e);
         });
     }
 
-    return {getPositionMarker, setPositionMarker, getBoard, getAvailableMoves, resetBoard};
+    return {getPositionMarker, setPositionMarker, getBoard, getAvailableMoves, resetBoard, registerCellListener, deRegisterCellListener};
 })()
 
 function createPlayer(name, marker){
@@ -135,6 +148,11 @@ const game = (function(){
         }
         else {
             winDisplay.textContent = 'Whoops, something unexpected happened!';
+        }
+
+        for (const freeCell of gameboard.getAvailableMoves()){
+            const board = gameboard.getBoard();
+            gameboard.deRegisterCellListener(board[freeCell]);
         }
 
         const body = document.querySelector('body');
